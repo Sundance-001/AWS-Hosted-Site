@@ -1,13 +1,20 @@
 # mySundance
 
-Vite + React + TypeScript starter.
+A multi-page cinephile site: cinema over the decades (talkies to superhero films), a blog, and lists.
 
-## Setup
+## Run
 
 ```bash
-cd C:\Users\gh\Projects\mySundance
 npm install
 npm run dev
 ```
 
-Then open the local URL printed in the terminal (usually `http://localhost:5173`).
+Open the URL Vite prints (usually `http://localhost:5173`).
+
+## Pages
+
+- `/` — home
+- `/decades` — eras and example films
+- `/blog` and `/blog/:slug` — posts
+- `/lists` and `/lists/:slug` — lists
+- `/about` — house notes
