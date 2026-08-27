@@ -1,4 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
+import Oneko from "./Oneko";
 
 const links = [
   { to: "/", label: "Home", end: true },
@@ -32,6 +33,7 @@ export default function Layout() {
       <footer className="site-footer">
         <p>A cinephile notebook — talkies to capes, lists to late-night posts.</p>
       </footer>
+      <Oneko />
     </div>
   );
 }

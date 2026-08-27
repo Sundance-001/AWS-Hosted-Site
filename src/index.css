@@ -4,7 +4,7 @@
   line-height: 1.5;
   font-weight: 400;
   color: #f4efe6;
-  background: #1c1712;
+  background: #050505; /* Deep cinematic black */
 }
 
 * {
@@ -14,14 +14,80 @@
 body {
   margin: 0;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 #root {
   min-height: 100vh;
 }
 
-button,
-input,
-textarea {
+button, input, textarea {
   font: inherit;
+}
+
+/* --- The Director's Spotlight --- */
+.spotlight-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none; /* Allows you to click links underneath */
+  z-index: 9998;
+  /* Creates a transparent circle at the mouse coordinates, fading to pitch black */
+  background: radial-gradient(
+    circle 350px at var(--mouse-x, 50vw) var(--mouse-y, 50vh),
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.6) 40%,
+    rgba(0, 0, 0, 0.95) 80%,
+    #050505 100%
+  );
+  will-change: background;
+}
+
+/* --- Startup Animation Styles --- */
+.startup-container {
+  position: fixed;
+  inset: 0;
+  background: #050505;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeOutContainer 0.8s ease-in forwards 2.5s;
+}
+
+.clapper-image {
+  width: 300px;
+  height: auto;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: dropIn 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.2s;
+}
+
+/* The bright camera flash mimicking the clapper snapping shut */
+.startup-flash {
+  position: absolute;
+  inset: 0;
+  background: white;
+  opacity: 0;
+  pointer-events: none;
+  animation: cameraFlash 0.3s ease-out forwards 1.2s;
+}
+
+@keyframes dropIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes cameraFlash {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes fadeOutContainer {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
